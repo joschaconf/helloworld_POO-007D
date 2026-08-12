@@ -1,4 +1,4 @@
-package dev.joschaconf;
+package dev.joschaconf.biblioteca;
 
 public class Libro {
     private String title;
