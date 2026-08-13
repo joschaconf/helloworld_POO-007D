@@ -1,4 +1,4 @@
-package dev.joschaconf.Banco;
+package dev.joschaconf.banco;
 
 public class CuentaBancaria {
 }
