@@ -30,14 +30,6 @@ public class Prestamo {
         return !devuelto && fechaActual.isAfter(fechaDevolucion);
     }
 
-    // Calcula cuántos días de atraso lleva el préstamo (0 si no está vencido)
-    public long diasDeAtraso(LocalDate fechaActual) {
-        if (estaVencido(fechaActual)) {
-            return Period.between(fechaDevolucion, fechaActual).getDays();
-        }
-        return 0;
-    }
-
     // Muestra en consola la información resumida del préstamo
     public void mostrarDetalle() {
         System.out.println("Estudiante: " + estudiante + " | Préstamo: " + fechaPrestamo
