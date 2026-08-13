@@ -5,34 +5,29 @@ public class Libro {
     private int year;
     private String author;
     private String isbn;
+    private boolean disponible;
 
     public Libro(String title, int year, String author, String isbn) {
-        this.title = "sin definir";
-        this.year = 2026;
-        this.author = "anonimo";
-        this.isbn = "";
+        this.title = title;
+        this.year = year;
+        this.author = author;
+        this.isbn = isbn;
+        this.disponible = true; // todo libro nuevo empieza disponible
     }
 
-    public boolean prestamo(String prestamo) {
-        return true;
+    public boolean prestamo() {
+        if (disponible) {
+            disponible = false;
+            return true;
+        }
+        return false; // ya estaba prestado, no se puede prestar de nuevo
     }
 
-    public boolean disponibilidad(String disponibilidad) {
-        return true;
+    public boolean disponibilidad() {
+        return disponible;
     }
 
-    public void devolver(String fechaDevolucion) {
-    }
-
-    private void isbn() {
-    }
-
-    private void author() {
-    }
-
-    private void title() {
-    }
-
-    private void year() {
+    public void devolver() {
+        disponible = true;
     }
 }
