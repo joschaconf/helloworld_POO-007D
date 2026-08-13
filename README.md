@@ -6,38 +6,37 @@ En cada código encontrará comentarios que explican cada atributo y métodos ut
 Estructura del proyecto
 
 dev.joschaconf
-│
-├── biblioteca/
-│   ├── Libro.java
-│   └── Prestamo.java
-│
-├── tienda/
-│   └── Producto.java
-│
-├── banco/
-│   └── CuentaBancaria.java
-│
-├── gestionAcademica/
-│   ├── Estudiante.java
-│   └── Curso.java
-│
-├── veterinaria/
-│   └── Mascota.java
-│
-├── deliveryComida/
-│   └── Pedido.java
-│
-├── cine/
-│   └── EntradaCine.java
-│
-├── clinica/
-│   ├── Paciente.java
-│   └── CitaMedica.java
-│
-├── transporteEscolar/
-│   └── BusEscolar.java
-│
-├── gimnasio/
-│   └── Socio.java
-│
-└── Main.java
+  Main.java
+
+  biblioteca/
+    Libro.java
+    Prestamo.java
+
+  tienda/
+    Producto.java
+
+  banco/
+    CuentaBancaria.java
+
+  gestionAcademica/
+    Estudiante.java
+    Curso.java
+
+  veterinaria/
+    Mascota.java
+
+  delivery/
+    Pedido.java
+
+  cine/
+    EntradaCine.java
+
+  clinica/
+    Paciente.java
+    CitaMedica.java
+
+  transporte/
+    BusEscolar.java
+
+  gimnasio/
+    Socio.java
