@@ -1,13 +1,17 @@
 package dev.joschaconf.biblioteca;
 
-public class Prestamo {
-    private Libro libro;
-    private String estudiante;
-    private String fechaPrestamo;
-    private String fechaDevolucion;
-    private boolean devuelto;
+import java.time.LocalDate;
+import java.time.Period;
 
-    public Prestamo(Libro libro, String estudiante, String fechaPrestamo, String fechaDevolucion) {
+public class Prestamo {
+    private Libro libro;               // Libro que fue prestado
+    private String estudiante;         // Nombre del estudiante que pidió el préstamo
+    private LocalDate fechaPrestamo;   // Fecha en que se realizó el préstamo
+    private LocalDate fechaDevolucion; // Fecha límite en la que debe devolverse el libro
+    private boolean devuelto;          // true si el libro ya fue devuelto, false si sigue pendiente
+
+    // Constructor: crea un préstamo nuevo, que siempre empieza como "no devuelto"
+    public Prestamo(Libro libro, String estudiante, LocalDate fechaPrestamo, LocalDate fechaDevolucion) {
         this.libro = libro;
         this.estudiante = estudiante;
         this.fechaPrestamo = fechaPrestamo;
@@ -15,15 +19,26 @@ public class Prestamo {
         this.devuelto = false;
     }
 
+    // Marca el préstamo como devuelto y avisa al libro que vuelve a estar disponible
     public void registrarDevolucion() {
         this.devuelto = true;
-        this.libro.devolver(); // avisa al libro que vuelve a estar disponible
+        this.libro.devolver();
     }
 
-    public boolean estaVencido(String fechaActual) {
-        return !devuelto && fechaActual.compareTo(fechaDevolucion) > 0;
+    // Indica si el préstamo está atrasado: no se ha devuelto Y ya pasó la fecha límite
+    public boolean estaVencido(LocalDate fechaActual) {
+        return !devuelto && fechaActual.isAfter(fechaDevolucion);
     }
 
+    // Calcula cuántos días de atraso lleva el préstamo (0 si no está vencido)
+    public long diasDeAtraso(LocalDate fechaActual) {
+        if (estaVencido(fechaActual)) {
+            return Period.between(fechaDevolucion, fechaActual).getDays();
+        }
+        return 0;
+    }
+
+    // Muestra en consola la información resumida del préstamo
     public void mostrarDetalle() {
         System.out.println("Estudiante: " + estudiante + " | Préstamo: " + fechaPrestamo
                 + " | Devolución: " + fechaDevolucion + " | Devuelto: " + devuelto);
